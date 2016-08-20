@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font: 14px Verdana;
+}
+
+.span {
+  display: block;
+}
+
+.input {
+  display: none;
+}
+
+.label {
+  position: relative;
+  display: block;
+  margin-left: 20px;
+}
+
+.label:before {
+  position: absolute;
+  display: inline-block;
+  content: '';
+  top: 3px;
+  left: -20px;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #000;
+  background: #CCE2F6;
+}
+
+.input:checked + .label:before {
+  background: red;
+}
