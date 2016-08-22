@@ -52,11 +52,11 @@ var create = {
         }
         this.countLi++;
     },
-    input: function() {
+    submit: function() {
         this.createElement({
             tag: 'input',
-            parent: 'form',
             className: 'submit',
+            parent: 'form',
             attributs: {
                 type: 'submit',
                 value: 'Проверить мои результаты'
@@ -85,4 +85,4 @@ create.ol();
 create.li();
 create.li();
 create.li();
-create.input();
+create.submit();
