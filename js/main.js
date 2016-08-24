@@ -1,88 +1,65 @@
-var create = {
-    form: function() {
-        this.createElement({
-            tag: 'form'
-        });
-    },
-    h1: function() {
-        this.createElement({
-            tag: 'h1',
-            parent: 'form',
-            text: 'Тест по программированию'
-        });
-    },
-    ol: function() {
-        this.createElement({
-            tag: 'ol',
-            parent: 'form'
-        });
-    },
-    countLi: 1,
-    li: function() {
-        this.createElement({
-            tag: 'li',
-            className: 'li-' + this.countLi,
-            parent: 'ol'
-        });
-        this.createElement({
-            tag: 'span',
-            parent: 'li-' + this.countLi,
-            text: 'Вопрос №' + this.countLi
-        });
-
-        for (var i = 1; i <= 3; i++) {
-            this.createElement({
-                tag: 'input',
-                parent: 'li-' + this.countLi,
-                attributs: {
-                    type: 'radio',
-                    id: 'radio-' + this.countLi + '-' + i,
-                    name: 'radio-' + this.countLi
-                }
-            });
-            this.createElement({
-                tag: 'label',
-                className: 'label',
-                parent: 'li-' + this.countLi,
-                attributs: {
-                    for: 'radio-' + this.countLi + '-' + i,
-                },
-                text: 'Вариант ответа №' + i
-            });
-        }
-        this.countLi++;
-    },
-    submit: function() {
-        this.createElement({
-            tag: 'input',
-            className: 'submit',
-            parent: 'form',
-            attributs: {
-                type: 'submit',
-                value: 'Проверить мои результаты'
-            }
-        });
-    },
-    createElement: function(options) {
-        var parentElem = (options.parent) ?  document.querySelector('.' + options.parent) : document.body;
-        var elem = document.createElement(options.tag);
-
-        elem.classList.add(options.tag);
-        (options.className) ? elem.classList.add(options.className) : '';
-        if (options.attributs) {
-            for (var key in options.attributs) {
-                elem.setAttribute(key, options.attributs[key]);
-            }
-        }
-        elem.innerHTML = options.text || '';
-        parentElem.appendChild(elem);
+var setAttributes = function(attributs) {
+    for (var key in attributs) {
+        this.setAttribute(key, attributs[key]);
     }
 };
 
-create.form();
-create.h1();
-create.ol();
-create.li();
-create.li();
-create.li();
-create.submit();
+var createElem = function(tag, parent, text) {
+    var elem = document.createElement(tag);
+    elem.innerHTML = text || '';
+    parent.appendChild(elem).addAttrb = setAttributes;
+    return elem;
+};
+
+var form = createElem('form', document.body);
+var h1 = createElem('h1', form, 'Тест по программированию');
+var ol = createElem('ol', form);
+var li = createElem('li', ol);
+var span = createElem('span', li, 'Вопрос №1');
+var radio = createElem('input', li)
+radio.addAttrb({'type': 'radio', 'id': 'radio-1-1', 'name': 'radio-1'});
+var label = createElem('label', li, 'Вариант ответа №1');
+label.addAttrb({for: 'radio-1-1'});
+var radio = createElem('input', li);
+radio.addAttrb({'type': 'radio', 'id': 'radio-1-2', 'name': 'radio-1'});
+var label = createElem('label', li, 'Вариант ответа №2');
+label.addAttrb({for: 'radio-1-2'});
+var radio = createElem('input', li);
+radio.addAttrb({type: 'radio', id: 'radio-1-3', name: 'radio-1'});
+var label = createElem('label', li, 'Вариант ответа №3');
+label.addAttrb({for: 'radio-1-3'});
+
+var li = createElem('li', ol);
+var span = createElem('span', li, 'Вопрос №2');
+var radio = createElem('input', li);
+radio.addAttrb({type: 'radio', id: 'radio-2-1', name: 'radio-2'});
+var label = createElem('label', li, 'Вариант ответа №1');
+label.addAttrb({for: 'radio-2-1'});
+var radio = createElem('input', li);
+radio.addAttrb({type: 'radio', id: 'radio-2-2', name: 'radio-2'});
+var label = createElem('label', li, 'Вариант ответа №2');
+label.addAttrb({for: 'radio-2-2'});
+var radio = createElem('input', li);
+radio.addAttrb({type: 'radio', id: 'radio-2-3', name: 'radio-2'});
+var label = createElem('label', li, 'Вариант ответа №3');
+label.addAttrb({for: 'radio-2-3'});
+
+var li = createElem('li', ol);
+var span = createElem('span', li, 'Вопрос №3');
+var radio = createElem('input', li);
+radio.addAttrb({type: 'radio', id: 'radio-3-1', name: 'radio-3'});
+var label = createElem('label', li, 'Вариант ответа №1');
+label.addAttrb({for: 'radio-3-1'});
+
+var radio = createElem('input', li);
+radio.addAttrb({type: 'radio', id: 'radio-3-2', name: 'radio-3'});
+var label = createElem('label', li, 'Вариант ответа №2');
+label.addAttrb({for: 'radio-3-2'});
+
+var radio = createElem('input', li);
+radio.addAttrb({type: 'radio', id: 'radio-3-3', name: 'radio-3'});
+var label = createElem('label', li, 'Вариант ответа №3');
+label.addAttrb({for: 'radio-3-3'});
+
+var submit = createElem('input', form);
+submit.addAttrb({type: 'submit', value: 'Проверить мои результаты'});

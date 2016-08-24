@@ -6,30 +6,30 @@ body {
   font: 14px Verdana;
 }
 
-.span {
+span {
   display: block;
   margin: 10px 0;
 }
 
-.h1 {
+h1 {
   text-align: center;
 }
 
-.input {
+input {
   display: none;
 }
 
-.ol {
+ol {
   margin: 50px 30px
 }
 
-.label {
+label {
   position: relative;
   display: block;
   margin-left: 20px;
 }
 
-.label:before {
+label:before {
   position: absolute;
   display: inline-block;
   content: '';
@@ -41,11 +41,11 @@ body {
   background: #CCE2F6;
 }
 
-.input:checked + .label:before {
+input:checked + label:before {
   background: red;
 }
 
-.submit {
+input[type='submit'] {
   display: block;
   margin: 0 auto;
   padding: 10px;
