@@ -6,11 +6,6 @@ body {
   font: 14px Verdana;
 }
 
-span {
-  display: block;
-  margin: 10px 0;
-}
-
 h1 {
   text-align: center;
 }
@@ -23,25 +18,29 @@ ol {
   margin: 50px 30px
 }
 
+li > span {
+  display: block;
+  margin: 10px 0;
+}
+
 label {
   position: relative;
   display: block;
-  margin-left: 20px;
+  margin-left: 30px;
 }
 
-label:before {
+label > span {
   position: absolute;
-  display: inline-block;
-  content: '';
-  top: 3px;
   left: -20px;
-  width: 10px;
-  height: 10px;
+  top: 3px;
+  width: 13px;
+  height: 13px;
   border: 2px solid #000;
   background: #CCE2F6;
+  vertical-align: middle;
 }
 
-input:checked + label:before {
+input:checked + span {
   background: red;
 }
 
