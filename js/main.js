@@ -7,7 +7,9 @@ var addAttrs = function(obj, attributes) {
 var createElem = function(tag, parent, text, attrs) {
     var elem = document.createElement(tag);
     elem.innerHTML = text || '';
-    addAttrs(elem, attrs);
+    if (attrs) {
+        addAttrs(elem, attrs);
+    }
     return parent.appendChild(elem);
 };
 
